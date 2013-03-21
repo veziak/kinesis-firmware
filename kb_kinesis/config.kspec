@@ -1,6 +1,6 @@
 /*
                     The HumbleHacker Keyboard Project
-                 Copyright ï¿½ 2008-2010, David Whetstone
+                 Copyright © 2008-2010, David Whetstone
                david DOT whetstone AT humblehacker DOT com
 
   This file is a part of The HumbleHacker Keyboard Project.
@@ -77,12 +77,12 @@ KeyMap:Common
   Key:LCT Map:Left_Control                               tl:"Ctrl"
   Key:LAL Map:Left_Alt                                   tl:"Alt"
   Key:BAK Map:Backspace                                  tl:"Backspace"
-  Key:DEL Map:Delete_Forward                             tl:"Delete"
+  Key:DEL Map:ESCAPE                                     tl:"esc"
   Key:HOM Map:Home                                       tl:"Home"
   Key:END Map:End                                        tl:"End"
 
   /* Right Thumb */
-  Key:RAL Map:Right_Alt                                  tl:"Alt"
+  Key:RAL Map:Right_GUI                                  tl:"{win}"
   Key:RCT Map:Right_Control                              tl:"Ctrl"
   Key:PGU Map:PageUp                                     tl:"Pg Up"
   Key:PGD Map:PageDown                                   tl:"Pg Dn"
@@ -110,7 +110,7 @@ KeyMap:Common
   Key:XX  Map:Application                                tl:"{menu}"
   */
 
-KeyMap:US  base:Common default
+KeyMap:US  base:Common
 
   Key:BQ  Map:`_and_~                                    tl:"~"    bl:"`"
   Key:1   Map:1_and_!                                    tl:"!"    bl:"1"
@@ -194,6 +194,40 @@ KeyMap:DV  base:US
   Key:PER  Map:v_and_V                                   tl:"V"
   Key:SLA  Map:z_and_Z                                   tl:"Z"
 
+KeyMap:NEO  base:US default
+
+  Key:Q    Map:x_and_X                                   tl:"X"
+  Key:W    Map:v_and_V                                   tl:"V"
+  Key:E    Map:l_and_L                                   tl:"L"
+  Key:R    Map:c_and_C                                   tl:"C"
+  Key:T    Map:w_and_W                                   tl:"W"
+  Key:Y    Map:k_and_K                                   tl:"K"
+  Key:U    Map:h_and_H                                   tl:"H"
+  Key:I    Map:g_and_G                                   tl:"G"
+  Key:O    Map:f_and_F                                   tl:"F"
+  Key:P    Map:q_and_Q                                   tl:"Q"
+
+  Key:A    Map:u_and_U                                   tl:"U"
+  Key:S    Map:i_and_I                                   tl:"I"
+  Key:D    Map:a_and_A                                   tl:"A"
+  Key:F    Map:e_and_E                                   tl:"E"
+  Key:G    Map:o_and_O                                   tl:"O"
+  Key:H    Map:s_and_S                                   tl:"S"
+  Key:J    Map:n_and_N                                   tl:"N"
+  Key:K    Map:r_and_R                                   tl:"R"
+  Key:L    Map:t_and_T                                   tl:"T"
+  Key:SEM  Map:d_and_D                                   tl:"D"
+  Key:APO  Map:y_and_Y                                   tl:"Y"
+
+  Key:Z    Map:;_and_\:                                  tl:":"    bl:";"
+  Key:X    Map:squote_and_dquote                         tl:"\""   bl:"\'"
+  Key:C    Map:/_and_?                                   tl:"?"    bl:"/"
+  Key:V    Map:p_and_P                                   tl:"p"
+  Key:B    Map:z_and_Z                                   tl:"z"
+  Key:N    Map:b_and_B                                   tl:"b"
+  Key:SLA  Map:j_and_J                                   tl:"j"
+
+
 KeyMap:Fn
 
   Key:KEY Macro:
@@ -237,8 +271,8 @@ KeyMap:Fn
       Map:r_and_R
       Map:d_and_D
       Map:Return_or_Enter
-  Key:F1 Mode:US             type:toggle              tl:"US"
-  Key:F2 Mode:DV  led:Dvorak type:toggle              tl:"Dvorak"
+  Key:F1 Mode:NEO            type:toggle              tl:"NEO"
+  Key:F2 Mode:US             type:toggle              tl:"US"
 
 KeyMap:KeyPad base:Common
 
