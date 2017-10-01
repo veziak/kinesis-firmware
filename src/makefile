@@ -47,7 +47,7 @@
 # make doxygen = Generate DoxyGen documentation for the project (must have
 #                DoxyGen installed)
 #
-# make debug = Start either simulavr or avarice as specified for debugging, 
+# make debug = Start either simulavr or avarice as specified for debugging,
 #              with avr-gdb or avr-insight as the front end for debugging.
 #
 # make filename.s = Just compile filename.c into the assembler code only.
@@ -59,7 +59,7 @@
 #----------------------------------------------------------------------------
 
 # Target board (see library "Board Types" documentation, NONE for projects not requiring
-# LUFA board drivers). If USER is selected, put custom board drivers in a directory called 
+# LUFA board drivers). If USER is selected, put custom board drivers in a directory called
 # "Board" inside the application directory.
 BOARD  = USER
 
@@ -105,7 +105,7 @@ LUFA_SRC = $(LUFA_PATH)/LUFA/Drivers/USB/LowLevel/DevChapter9.c       \
 	   $(LUFA_PATH)/LUFA/Drivers/USB/HighLevel/USBTask.c          \
 	   $(LUFA_PATH)/LUFA/Drivers/USB/Class/Device/HID.c           \
 	   $(LUFA_PATH)/LUFA/Drivers/USB/Class/Host/HID.c             \
-	   $(LUFA_PATH)/LUFA/Drivers/USB/Class/Host/HIDParser.c       
+	   $(LUFA_PATH)/LUFA/Drivers/USB/Class/Host/HIDParser.c
 
 # List C source files here. (C dependencies are automatically generated.)
 ifndef MATRIX_MODE
@@ -138,7 +138,7 @@ endif
 
 
 # List C++ source files here. (C dependencies are automatically generated.)
-CPPSRC = 
+CPPSRC =
 
 
 # List Assembler source files here.
@@ -206,6 +206,7 @@ CFLAGS += -ffunction-sections
 #CFLAGS += -fno-inline-small-functions
 CFLAGS += -fpack-struct
 CFLAGS += -fshort-enums
+CFLAGS += -w
 CFLAGS += -Wall
 CFLAGS += -Wstrict-prototypes
 CFLAGS += -Wundef
@@ -251,7 +252,7 @@ CPPFLAGS += $(patsubst %,-I%,$(EXTRAINCDIRS))
 #             for use in COFF files, additional information about filenames
 #             and function names needs to be present in the assembler source
 #             files -- see avr-libc docs [FIXME: not yet described there]
-#  -listing-cont-lines: Sets the maximum number of continuation lines of hex 
+#  -listing-cont-lines: Sets the maximum number of continuation lines of hex
 #       dump that will be displayed for a given single line of source input.
 ASFLAGS = $(ADEFS) -Wa,-adhlns=$(patsubst %.S,%.lst,$(<:../%.S=$(OBJDIR)/%.lst)),-gstabs,--listing-cont-lines=100
 
@@ -264,7 +265,7 @@ PRINTF_LIB_MIN = -Wl,-u,vfprintf -lprintf_min
 PRINTF_LIB_FLOAT = -Wl,-u,vfprintf -lprintf_flt
 
 # If this is left blank, then it will use the Standard printf version.
-PRINTF_LIB = 
+PRINTF_LIB =
 #PRINTF_LIB = $(PRINTF_LIB_MIN)
 #PRINTF_LIB = $(PRINTF_LIB_FLOAT)
 
@@ -276,7 +277,7 @@ SCANF_LIB_MIN = -Wl,-u,vfscanf -lscanf_min
 SCANF_LIB_FLOAT = -Wl,-u,vfscanf -lscanf_flt
 
 # If this is left blank, then it will use the Standard scanf version.
-SCANF_LIB = 
+SCANF_LIB =
 #SCANF_LIB = $(SCANF_LIB_MIN)
 #SCANF_LIB = $(SCANF_LIB_FLOAT)
 
@@ -288,7 +289,7 @@ MATH_LIB = -lm
 #     Each directory must be seperated by a space.
 #     Use forward slashes for directory separators.
 #     For a directory that has spaces, enclose it in quotes.
-EXTRALIBDIRS = 
+EXTRALIBDIRS =
 
 
 
@@ -353,7 +354,7 @@ KSPEC = ../kspec
 MSG_ERRORS_NONE = Errors: none
 MSG_BEGIN = -------- begin --------
 MSG_END = --------  end  --------
-MSG_SIZE_BEFORE = Size before: 
+MSG_SIZE_BEFORE = Size before:
 MSG_SIZE_AFTER = Size after:
 MSG_COFF = Converting to AVR COFF:
 MSG_EXTENDED_COFF = Converting to AVR Extended COFF:
@@ -372,12 +373,12 @@ MSG_CREATING_LIBRARY = Creating library:
 
 
 # Define all object files.
-OBJx = $(SRC:../%.c=$(OBJDIR)/%.o) $(CPPSRC:../%.cpp=$(OBJDIR)/%.o) $(ASRC:../%.S=$(OBJDIR)/%o) 
+OBJx = $(SRC:../%.c=$(OBJDIR)/%.o) $(CPPSRC:../%.cpp=$(OBJDIR)/%.o) $(ASRC:../%.S=$(OBJDIR)/%o)
 OBJ = $(OBJx:%.c=$(OBJDIR)/%.o)
 OBJDIRS = $(sort $(dir $(basename $(OBJ))))
 
 # Define all listing files.
-LSTx = $(SRC:../%.c=$(OBJDIR)/%.lst) $(CPPSRC:../%.cpp=$(OBJDIR)/%.lst) $(ASRC:../$(OBJDIR)/%.S=%.lst) 
+LSTx = $(SRC:../%.c=$(OBJDIR)/%.lst) $(CPPSRC:../%.cpp=$(OBJDIR)/%.lst) $(ASRC:../$(OBJDIR)/%.S=%.lst)
 LST = $(LSTx:%.c=$(OBJDIR)/%.lst)
 
 
@@ -398,7 +399,7 @@ ALL_ASFLAGS = -mmcu=$(MCU) -I. -x assembler-with-cpp $(ASFLAGS)
 # Default target.
 all: begin $(OBJDIR)/.generate gccversion sizebefore build checkinvalidevents showliboptions showtarget sizeafter end
 
-test: 
+test:
 	cd $(SRCDIR) && make -f test.mak
 
 TEMPLATE_FILES = \
@@ -406,7 +407,7 @@ TEMPLATE_FILES = \
 	$(TEMPLATE_DIR)/keymaps.elu.h  \
 	$(TEMPLATE_DIR)/keymaps.elu.c  \
 	$(TEMPLATE_DIR)/binding.elu.h  \
-	$(TEMPLATE_DIR)/binding.elu.c 
+	$(TEMPLATE_DIR)/binding.elu.c
 
 $(OBJDIR)/$(GENERATED)/matrix.h : $(TEMPLATE_FILES)
 $(OBJDIR)/$(GENERATED)/keymaps.h : $(TEMPLATE_FILES)
@@ -418,7 +419,7 @@ $(OBJDIR)/$(GENERATED)/binding.c : $(TEMPLATE_FILES)
 
 $(KSPEC) :
 	@echo \'kspec\' binary not found.  Get one from http://github.com/humblehacker/kspec/downloads.
-	@echo See the readme at http://github.com/humblehacker/keyboard/tree/master/firmware/ 
+	@echo See the readme at http://github.com/humblehacker/keyboard/tree/master/firmware/
 	@echo for more information.
 	@exit 1
 
@@ -493,15 +494,15 @@ showtarget:
 	@echo Board:     $(BOARD)
 	@echo Clock:     $(F_CPU)Hz CPU, $(F_CLOCK)Hz Master
 	@echo --------------------------------------
-	
+
 
 # Display compiler version information.
-gccversion : 
+gccversion :
 	@$(CC) --version
 
 
 
-# Program the device.  
+# Program the device.
 program: $(TARGET).hex $(TARGET).eep
 	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH) $(AVRDUDE_WRITE_EEPROM)
 
@@ -528,9 +529,9 @@ dfu-ee: $(TARGET).hex $(TARGET).eep
 
 
 # Generate avr-gdb config/init file which does the following:
-#     define the reset signal, load the target file, connect to target, and set 
+#     define the reset signal, load the target file, connect to target, and set
 #     a breakpoint at main().
-gdb-config: 
+gdb-config:
 	@$(REMOVE) $(GDBINIT_FILE)
 	@echo define reset >> $(GDBINIT_FILE)
 	@echo SIGNAL SIGHUP >> $(GDBINIT_FILE)
@@ -583,7 +584,7 @@ extcoff: $(TARGET).elf
 # Create final output files (.hex, .eep) from ELF output file.
 %.hex: %.elf
 	@echo
-	@echo $(MSG_FLASH) $@ 
+	@echo $(MSG_FLASH) $@
 	@$(OBJCOPY) -O $(FORMAT) -R .eeprom $< $@
 
 %.eep: %.elf
@@ -632,7 +633,7 @@ $(OBJDIR)/%.o : %.c
 	  @echo Creating dir: $(dir $@); \
 	  @mkdir -p $(dir $@); \
 	fi
-	$(CC) -c $(ALL_CFLAGS) $< -o $@ 
+	$(CC) -c $(ALL_CFLAGS) $< -o $@
 
 
 # Compile: create object files from C++ source files.
@@ -643,7 +644,7 @@ $(OBJDIR)/%.o : %.cpp
 	  @echo Creating dir: $(dir $@); \
 	  @mkdir -p $(dir $@); \
 	fi
-	@$(CC) -c $(ALL_CPPFLAGS) $< -o $@ 
+	@$(CC) -c $(ALL_CPPFLAGS) $< -o $@
 
 
 # Compile: create assembler files from C source files.
@@ -669,8 +670,8 @@ $(OBJDIR)/%.o : %.cpp
 
 # Create preprocessed source for use in sending a bug report.
 %.i : %.c
-	$(CC) -E -mmcu=$(MCU) -I. $(CFLAGS) $< -o $@ 
-	
+	$(CC) -E -mmcu=$(MCU) -I. $(CFLAGS) $< -o $@
+
 
 # Target: clean project.
 clean: begin clean_list clean_binary clean_test end

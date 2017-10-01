@@ -54,7 +54,7 @@ Matrix:
 KeyMap:Common
 
   /* F-Keys */
-  Key:ESC Map:Delete_Forward                             tl:"Delete"
+  Key:ESC Map:ESCAPE                                     tl:"esc"
   Key:F1  Map:F1                                         tl:"F1"
   Key:F2  Map:F2                                         tl:"F2"
   Key:F3  Map:F3                                         tl:"F3"
@@ -77,12 +77,12 @@ KeyMap:Common
   Key:LCT Map:Left_Control                               tl:"Ctrl"
   Key:LAL Map:Left_Alt                                   tl:"Alt"
   Key:BAK Map:Backspace                                  tl:"Backspace"
-  Key:DEL Map:ESCAPE                                     tl:"esc"
+  Key:DEL Map:Delete_Forward                             tl:"Delete"
   Key:HOM Map:Left_GUI                                   tl:"{win}"
   Key:END Map:End                                        tl:"End"
 
   /* Right Thumb */
-  Key:RAL Map:Right_Alt                                  tl:"Alt"
+  Key:RAL Map:Left_GUI                                   tl:"{win}"
   Key:RCT Map:Right_Control                              tl:"Ctrl"
   Key:PGU Map:PageUp                                     tl:"Pg Up"
   Key:PGD Map:PageDown                                   tl:"Pg Dn"
