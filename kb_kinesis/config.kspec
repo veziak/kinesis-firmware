@@ -78,7 +78,7 @@ KeyMap:Common
   Key:LAL Map:Left_Alt                                   tl:"Alt"
   Key:BAK Map:Backspace                                  tl:"Backspace"
   Key:DEL Map:Delete_Forward                             tl:"Delete"
-  Key:HOM Map:Left_GUI                                   tl:"{win}"
+  Key:HOM Map:Home                                       tl:"Home"
   Key:END Map:End                                        tl:"End"
 
   /* Right Thumb */
